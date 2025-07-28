@@ -1,9 +1,12 @@
 <?php
 
-use App\Kernel;
+use Symfony\Component\HttpFoundation\Response;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
 return function (array $context) {
-    return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
+    $number = random_int(0, 100);
+    return new Response(
+        '<html><body>Lucky number: '.$number.'</body></html>'
+    );
 };
